@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Dropdown Menu</title>
+  <style>
+    nav { background: #3498DB; padding: 0; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+    nav ul li { position: relative; }
+    nav ul li a {
+      display: block; padding: 15px 20px;
+      color: white; text-decoration: none;
+    }
+    nav ul li:hover { background: #2980B9; }
+
+    /* Submenu */
+    nav ul li ul {
+      position: absolute; top: 100%;
+      left: 0; background: #3498DB;
+      display: none; min-width: 160px;
+    }
+    nav ul li:hover > ul { display: block; }
+    nav ul li ul li a {
+      padding: 10px 20px; color: #fff;
+    }
+    nav ul li ul li:hover { background: #2980B9; }
+
+    /* Responsive */
+    .hamburger {
+      display: none; cursor: pointer;
+      font-size: 24px; padding: 15px;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column; display: none;
+      }
+      nav ul.show { display: flex; }
+      nav ul li ul { position: static; }
+      .hamburger { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="hamburger">&#9776;</span>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li>
+      <a href="#">HTML & CSS ▼</a>
+      <ul>
+        <li><a href="#">Web Design</a></li>
+        <li><a href="#">Login Form</a></li>
+        <li><a href="#">Card Design</a></li>
+        <li>
+          <a href="#">More ▶</a>
+          <ul>
+            <li><a href="#">Neumorphism</a></li>
+            <li><a href="#">Pre-loader</a></li>
+            <li><a href="#">Glassmorphism</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">JavaScript ▼</a>
+      <ul>
+        <li><a href="#">Examples</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Contact Us</a></li>
+    <li><a href="#">About Us</a></li>
+  </ul>
+</nav>
+
+<script>
+  const burger = document.querySelector('.hamburger');
+  const menu = document.querySelector('nav ul');
+
+  burger.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+</script>
+</body>
+</html>
